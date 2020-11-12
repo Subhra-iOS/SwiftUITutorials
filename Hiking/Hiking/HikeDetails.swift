@@ -25,7 +25,7 @@ struct HikeDetails: View {
             Text(hike.name)
                 .font(.title)
             Text(String(format: "%0.2f miles", hike.miles))
-        }
+        }.navigationBarTitle(Text(hike.name), displayMode: .inline)
     }
 }
 
