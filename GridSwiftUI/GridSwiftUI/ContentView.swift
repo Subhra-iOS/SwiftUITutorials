@@ -25,9 +25,10 @@ struct ContentView: View {
                     .background(Color.purple)
                     .foregroundColor(Color.white)
                     .clipShape(Circle())
-//                List(self.animals, id: \.self){ 
-//                    
-//                }
+                List(self.animals, id: \.self){ animal in
+                    Text("\(animal)")
+                        .font(.system(size: 50.0))
+                }
                
             }.navigationBarTitle(Text("Animals"))
         }
