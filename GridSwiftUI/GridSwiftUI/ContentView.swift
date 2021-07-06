@@ -10,14 +10,13 @@ import SwiftUI
 struct ContentView: View {
     
     let animals = ["🐈","🐆","🦌","🦒","🦏","🐄","🐀","🦩","🦜"]
+    
     @State private var sliderValue: CGFloat = 1.0
     
     var body: some View {
         NavigationView{
             VStack{
-                Slider(value: $sliderValue, in: 1...10, step: 1) { _  in
-                    
-                }
+                Slider(value: $sliderValue, in: 1...8, step: 1)
                 Text(String(format: "%.0f", self.sliderValue))
                     .font(.system(size: 20))
                     .fontWeight(.bold)
@@ -25,9 +24,11 @@ struct ContentView: View {
                     .background(Color.purple)
                     .foregroundColor(Color.white)
                     .clipShape(Circle())
-                List(self.animals, id: \.self){ animal in
-                    Text("\(animal)")
-                        .font(.system(size: 50.0))
+                List(self.animals.chunks(size: Int(self.sliderValue)), id: \.self){ animalPair in
+                    ForEach(animalPair, id: \.self) { (animal)  in
+                        Text(animal)
+                            .font(.system(size: CGFloat(300/self.sliderValue)))
+                    }
                 }
                
             }.navigationBarTitle(Text("Animals"))
