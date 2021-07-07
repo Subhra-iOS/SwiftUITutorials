@@ -9,17 +9,28 @@ import SwiftUI
 
 struct ContentView: View {
     let dishes = Dish.allDishes()
+    @State private var name: String = "Subhra"
     
     var body: some View {
         let chunkedDishes = dishes.chunked(into: 2)
-        List{
-            ForEach(0..<chunkedDishes.count){ index in
-                HStack{
-                    ForEach(chunkedDishes[index]) { dish  in
-                        Image(dish.imgUrl)
-                            .resizable()
-                            //.frame(width: 110, height: 110)
-                            .scaledToFit()
+        VStack {
+            Text(name)
+                .font(.largeTitle)
+            Button(action: {
+                name = "My Company"
+            }, label: {
+                Text("Click")
+                    .font(.largeTitle)
+            })
+            List{
+                ForEach(0..<chunkedDishes.count){ index in
+                    HStack{
+                        ForEach(chunkedDishes[index]) { dish  in
+                            Image(dish.imgUrl)
+                                .resizable()
+                                //.frame(width: 110, height: 110)
+                                .scaledToFit()
+                        }
                     }
                 }
             }
