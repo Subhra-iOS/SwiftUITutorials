@@ -18,6 +18,7 @@ struct ContentView: View {
                     ForEach(chunkedDishes[index]) { dish  in
                         Image(dish.imgUrl)
                             .resizable()
+                            //.frame(width: 110, height: 110)
                             .scaledToFit()
                     }
                 }
