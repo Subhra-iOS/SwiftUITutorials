@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         let chunkedDishes = dishes.chunked(into: 2)
-        return List{
+        List{
             ForEach(0..<chunkedDishes.count){ index in
                 HStack{
                     ForEach(chunkedDishes[index]) { dish  in
