@@ -38,7 +38,6 @@ struct ContentView: View {
                     }
                 }
             }
-            
             Button(action: didTapOnEnable) {
                 Text("Enable")
                     .font(.largeTitle)
