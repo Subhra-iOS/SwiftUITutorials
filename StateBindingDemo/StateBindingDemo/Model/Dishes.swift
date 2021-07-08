@@ -11,13 +11,13 @@ struct Dishes: Identifiable {
     let id: String = UUID().uuidString
     let name: String
     let imageUrl: String
-    let isSpiecy: Bool
+    let isSpicy: Bool
 }
 
 extension Dishes{
     static func all() -> [Dishes]{
-        return [Dishes(name: "Kung pow chicken", imageUrl: "kungpow", isSpiecy: true),
-                Dishes(name: "Spicy and garlic chicken", imageUrl: "spicy", isSpiecy: true),
-                Dishes(name: "Sweet and sour chicken", imageUrl: "sweet", isSpiecy: false)]
+        return [Dishes(name: "Kung pow chicken", imageUrl: "kungpow", isSpicy: true),
+                Dishes(name: "Spicy and garlic chicken", imageUrl: "spicy", isSpicy: true),
+                Dishes(name: "Sweet and sour chicken", imageUrl: "sweet", isSpicy: false)]
     }
 }

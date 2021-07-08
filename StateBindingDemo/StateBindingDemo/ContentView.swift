@@ -9,17 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     let models = Dishes.all()
-    @State private var isSpiecy: Bool = false
+    @State private var isSpicy: Bool = false
     @State private var isToggleEnable: Bool = false
     
     var body: some View {
         VStack{
-            Toggle(isOn: $isSpiecy) {
-                Text("Spiecy")
+            Toggle(isOn: $isSpicy) {
+                Text("Spicy")
                     .font(.title)
             }
             List{
-                ForEach(isToggleEnable ? models.filter{ $0.isSpiecy == self.isSpiecy } : models) { dish in
+                ForEach(isToggleEnable ? models.filter{ $0.isSpicy == self.isSpicy } : models) { dish in
                     HStack{
                         Image(dish.imageUrl)
                             .resizable()
@@ -29,7 +29,7 @@ struct ContentView: View {
                             .font(.title)
                             .lineLimit(nil)
                         Spacer()
-                        if dish.isSpiecy {
+                        if dish.isSpicy {
                             Image("spicy-icon")
                                 .resizable()
                                 .frame(width: 30, height: 30)
@@ -47,7 +47,7 @@ struct ContentView: View {
     
     private func didTapOnEnable(){
         self.isToggleEnable = !self.isToggleEnable
-        self.isSpiecy = self.isToggleEnable
+        self.isSpicy = self.isToggleEnable
     }
 }
 
