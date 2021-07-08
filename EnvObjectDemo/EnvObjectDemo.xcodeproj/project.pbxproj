@@ -12,6 +12,7 @@
 		2A754E0226973F1400AF4253 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A754E0126973F1400AF4253 /* Assets.xcassets */; };
 		2A754E0526973F1400AF4253 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A754E0426973F1400AF4253 /* Preview Assets.xcassets */; };
 		2A754E0E26973F3700AF4253 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A754E0D26973F3700AF4253 /* UserSettings.swift */; };
+		2A754E122697541200AF4253 /* FancyScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A754E112697541200AF4253 /* FancyScoreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2A754E0426973F1400AF4253 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2A754E0626973F1400AF4253 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A754E0D26973F3700AF4253 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		2A754E112697541200AF4253 /* FancyScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyScoreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				2A754E0D26973F3700AF4253 /* UserSettings.swift */,
 				2A754DFD26973F1100AF4253 /* EnvObjectDemoApp.swift */,
 				2A754DFF26973F1100AF4253 /* ContentView.swift */,
+				2A754E112697541200AF4253 /* FancyScoreView.swift */,
 				2A754E0126973F1400AF4253 /* Assets.xcassets */,
 				2A754E0626973F1400AF4253 /* Info.plist */,
 				2A754E0326973F1400AF4253 /* Preview Content */,
@@ -144,6 +147,7 @@
 				2A754E0026973F1100AF4253 /* ContentView.swift in Sources */,
 				2A754E0E26973F3700AF4253 /* UserSettings.swift in Sources */,
 				2A754DFE26973F1100AF4253 /* EnvObjectDemoApp.swift in Sources */,
+				2A754E122697541200AF4253 /* FancyScoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

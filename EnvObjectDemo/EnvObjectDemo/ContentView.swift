@@ -15,14 +15,16 @@ struct ContentView: View {
             Text("\(self.settings.score)")
                 .font(.largeTitle)
                 .padding()
-                .background(Color.orange)
+                .background(Color.yellow)
             Button("Increment score") {
                 self.settings.score += 1
             }.padding()
             .background(Color.blue)
             .foregroundColor(.white)
                 
-        }
+            FancyScoreView(score: self.$settings.score)
+        }.padding()
+        .background(Color.gray)
     }
 }
 
