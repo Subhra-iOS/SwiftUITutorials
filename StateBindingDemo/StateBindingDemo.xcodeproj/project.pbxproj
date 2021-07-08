@@ -11,6 +11,7 @@
 		2A64027D269605CE009C3AF9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A64027C269605CE009C3AF9 /* ContentView.swift */; };
 		2A64027F269605D1009C3AF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A64027E269605D1009C3AF9 /* Assets.xcassets */; };
 		2A640282269605D1009C3AF9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A640281269605D1009C3AF9 /* Preview Assets.xcassets */; };
+		2A754DC82696D74300AF4253 /* Dishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A754DC72696D74300AF4253 /* Dishes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		2A64027E269605D1009C3AF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A640281269605D1009C3AF9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2A640283269605D1009C3AF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A754DC72696D74300AF4253 /* Dishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dishes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		2A640279269605CE009C3AF9 /* StateBindingDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2A754DC62696D72E00AF4253 /* Model */,
 				2A64027A269605CE009C3AF9 /* StateBindingDemoApp.swift */,
 				2A64027C269605CE009C3AF9 /* ContentView.swift */,
 				2A64027E269605D1009C3AF9 /* Assets.xcassets */,
@@ -67,6 +70,14 @@
 				2A640281269605D1009C3AF9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2A754DC62696D72E00AF4253 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A754DC72696D74300AF4253 /* Dishes.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +151,7 @@
 			files = (
 				2A64027D269605CE009C3AF9 /* ContentView.swift in Sources */,
 				2A64027B269605CE009C3AF9 /* StateBindingDemoApp.swift in Sources */,
+				2A754DC82696D74300AF4253 /* Dishes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
