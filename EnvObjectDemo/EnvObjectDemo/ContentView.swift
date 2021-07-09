@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var settings = UserSettings()
+    //@ObservedObject var settings = UserSettings()
+    @EnvironmentObject var settings: UserSettings
     
     var body: some View {
         VStack{
@@ -22,7 +23,7 @@ struct ContentView: View {
             .background(Color.blue)
             .foregroundColor(.white)
                 
-            FancyScoreView(score: self.$settings.score)
+            FancyScoreView()
         }.padding()
         .background(Color.gray)
     }
@@ -30,6 +31,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(UserSettings())
     }
 }

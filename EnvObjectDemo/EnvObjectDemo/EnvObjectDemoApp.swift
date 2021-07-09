@@ -11,7 +11,8 @@ import SwiftUI
 struct EnvObjectDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let userSettings = UserSettings()
+            ContentView().environmentObject(userSettings)
         }
     }
 }
