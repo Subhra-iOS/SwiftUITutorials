@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A3093A927416DD400352CAF /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3093A827416DD400352CAF /* Coffee.swift */; };
+		2A3093AD274174A500352CAF /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3093AC274174A500352CAF /* Order.swift */; };
+		2A3093B12741786F00352CAF /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3093B02741786F00352CAF /* Webservice.swift */; };
 		2A6D218F269AE97D005DE9FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6D218E269AE97D005DE9FB /* AppDelegate.swift */; };
 		2A6D2191269AE97D005DE9FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6D2190269AE97D005DE9FB /* SceneDelegate.swift */; };
 		2A6D2193269AE97D005DE9FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6D2192269AE97D005DE9FB /* ContentView.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A3093A827416DD400352CAF /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
+		2A3093AC274174A500352CAF /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		2A3093B02741786F00352CAF /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		2A6D218B269AE97D005DE9FB /* CoffeeOrderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeOrderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A6D218E269AE97D005DE9FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A6D2190269AE97D005DE9FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +43,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A3093A627416D9200352CAF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2A3093A827416DD400352CAF /* Coffee.swift */,
+				2A3093AC274174A500352CAF /* Order.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2A3093AF2741784700352CAF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2A3093B02741786F00352CAF /* Webservice.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		2A6D2182269AE97D005DE9FB = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +79,8 @@
 		2A6D218D269AE97D005DE9FB /* CoffeeOrderDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2A3093AF2741784700352CAF /* Services */,
+				2A3093A627416D9200352CAF /* Models */,
 				2A6D218E269AE97D005DE9FB /* AppDelegate.swift */,
 				2A6D2190269AE97D005DE9FB /* SceneDelegate.swift */,
 				2A6D2192269AE97D005DE9FB /* ContentView.swift */,
@@ -147,7 +172,10 @@
 			files = (
 				2A6D218F269AE97D005DE9FB /* AppDelegate.swift in Sources */,
 				2A6D2191269AE97D005DE9FB /* SceneDelegate.swift in Sources */,
+				2A3093B12741786F00352CAF /* Webservice.swift in Sources */,
+				2A3093AD274174A500352CAF /* Order.swift in Sources */,
 				2A6D2193269AE97D005DE9FB /* ContentView.swift in Sources */,
+				2A3093A927416DD400352CAF /* Coffee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
