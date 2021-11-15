@@ -14,19 +14,30 @@ enum ServiceError: Error {
 
 struct Webservice {
     
-    func getAllOrders(completion: @escaping (Swift.Result<[Order]?,ServiceError>) -> ()) -> Void{
-        guard let url = URL(string: "") else {
-            completion(.failure(.noData))
+    func getAllOrders(completion: @escaping (Swift.Result<[Order],ServiceError>) -> ()) -> Void{
+        guard let url = URL(string: "https://hazel-heavenly-smell.glitch.me/orders") else {
+            DispatchQueue.main.async {
+                completion(.failure(.noData))
+            }
             return
         }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, error == nil else {
-                completion(.failure(.invalid))
+                DispatchQueue.main.async {
+                    completion(.failure(.invalid))
+                }
                 return
             }
-            let orders = try? JSONDecoder().decode([Order].self, from: data)
-            completion(.success(orders))
+            if let orders = try? JSONDecoder().decode([Order].self, from: data){
+                DispatchQueue.main.async{
+                    completion(.success(orders))
+                }
+            }else{
+                DispatchQueue.main.async {
+                    completion(.failure(.invalid))
+                }
+            }
         }.resume()
     }
 }

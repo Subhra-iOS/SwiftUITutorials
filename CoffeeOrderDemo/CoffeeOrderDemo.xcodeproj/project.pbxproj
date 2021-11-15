@@ -16,6 +16,8 @@
 		2A6D2195269AE97F005DE9FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A6D2194269AE97F005DE9FB /* Assets.xcassets */; };
 		2A6D2198269AE97F005DE9FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A6D2197269AE97F005DE9FB /* Preview Assets.xcassets */; };
 		2A6D219B269AE97F005DE9FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A6D2199269AE97F005DE9FB /* LaunchScreen.storyboard */; };
+		2A7AB6F2274281420053941E /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7AB6F1274281420053941E /* OrderListViewModel.swift */; };
+		2A7AB6F7274287650053941E /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7AB6F6274287650053941E /* OrderListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		2A6D2197269AE97F005DE9FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2A6D219A269AE97F005DE9FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A6D219C269AE97F005DE9FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A7AB6F1274281420053941E /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
+		2A7AB6F6274287650053941E /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,11 +83,12 @@
 		2A6D218D269AE97D005DE9FB /* CoffeeOrderDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2A7AB6F52742874A0053941E /* Views */,
+				2A7AB6F0274281280053941E /* ViewModel */,
 				2A3093AF2741784700352CAF /* Services */,
 				2A3093A627416D9200352CAF /* Models */,
 				2A6D218E269AE97D005DE9FB /* AppDelegate.swift */,
 				2A6D2190269AE97D005DE9FB /* SceneDelegate.swift */,
-				2A6D2192269AE97D005DE9FB /* ContentView.swift */,
 				2A6D2194269AE97F005DE9FB /* Assets.xcassets */,
 				2A6D2199269AE97F005DE9FB /* LaunchScreen.storyboard */,
 				2A6D219C269AE97F005DE9FB /* Info.plist */,
@@ -98,6 +103,23 @@
 				2A6D2197269AE97F005DE9FB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2A7AB6F0274281280053941E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A7AB6F1274281420053941E /* OrderListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2A7AB6F52742874A0053941E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2A6D2192269AE97D005DE9FB /* ContentView.swift */,
+				2A7AB6F6274287650053941E /* OrderListView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,9 +193,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A6D218F269AE97D005DE9FB /* AppDelegate.swift in Sources */,
+				2A7AB6F7274287650053941E /* OrderListView.swift in Sources */,
 				2A6D2191269AE97D005DE9FB /* SceneDelegate.swift in Sources */,
 				2A3093B12741786F00352CAF /* Webservice.swift in Sources */,
 				2A3093AD274174A500352CAF /* Order.swift in Sources */,
+				2A7AB6F2274281420053941E /* OrderListViewModel.swift in Sources */,
 				2A6D2193269AE97D005DE9FB /* ContentView.swift in Sources */,
 				2A3093A927416DD400352CAF /* Coffee.swift in Sources */,
 			);
