@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A03323C274B78C400FAC672 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03323B274B78C400FAC672 /* Services.swift */; };
 		2A3093A927416DD400352CAF /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3093A827416DD400352CAF /* Coffee.swift */; };
 		2A3093AD274174A500352CAF /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3093AC274174A500352CAF /* Order.swift */; };
 		2A3093B12741786F00352CAF /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3093B02741786F00352CAF /* Webservice.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A03323B274B78C400FAC672 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		2A3093A827416DD400352CAF /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
 		2A3093AC274174A500352CAF /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		2A3093B02741786F00352CAF /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				2A3093B02741786F00352CAF /* Webservice.swift */,
+				2A03323B274B78C400FAC672 /* Services.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				2A3093AD274174A500352CAF /* Order.swift in Sources */,
 				2A7AB6F2274281420053941E /* OrderListViewModel.swift in Sources */,
 				2A6D2193269AE97D005DE9FB /* ContentView.swift in Sources */,
+				2A03323C274B78C400FAC672 /* Services.swift in Sources */,
 				2A3093A927416DD400352CAF /* Coffee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

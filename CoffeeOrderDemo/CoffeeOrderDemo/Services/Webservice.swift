@@ -7,15 +7,18 @@
 
 import Foundation
 
+
+
 enum ServiceError: Error {
     case invalid
     case noData
 }
 
+
 struct Webservice {
     
     func getAllOrders(completion: @escaping (Swift.Result<[Order],ServiceError>) -> ()) -> Void{
-        guard let url = URL(string: "https://hazel-heavenly-smell.glitch.me/orders") else {
+        guard let url = URL(string: Service.fetch("orders").url) else {
             DispatchQueue.main.async {
                 completion(.failure(.noData))
             }
