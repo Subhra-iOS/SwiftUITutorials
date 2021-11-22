@@ -6,14 +6,18 @@
 //
 
 import Foundation
-
-
+import Combine
 
 enum ServiceError: Error {
     case invalid
     case noData
+    case badRequest
 }
 
+enum RemoteResponse<T, ServiceError>{
+    case success(T)
+    case failure(ServiceError)
+}
 
 struct Webservice {
     
@@ -42,5 +46,28 @@ struct Webservice {
                 }
             }
         }.resume()
+    }
+    
+    func postCoffee(order: Order) throws -> Future<Data,ServiceError>{
+        guard let url: URL = URL(string: Service.post("orders").url) else{
+            throw ServiceError.badRequest
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        guard let jsonBody = try? JSONEncoder().encode(order) else {
+            throw ServiceError.badRequest
+        }
+        request.httpBody = jsonBody
+        return Future{ promise in
+            URLSession.shared.dataTask(with: request){ data, response, error in
+                guard let data = data, error == nil else {
+                    promise(.failure(.noData))
+                    return
+                }
+                promise(.success(data))
+            }.resume()
+        }
     }
 }

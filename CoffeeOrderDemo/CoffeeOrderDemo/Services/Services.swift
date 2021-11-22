@@ -19,12 +19,15 @@ protocol ServiceProtocol {
 
 enum Service{
     case fetch(String)
+    case post(String)
 }
 
 extension Service: ServiceProtocol{
     var url: String {
         switch self {
             case .fetch(let uri):
+                return API.URL.baseUrl + uri
+            case .post(let uri):
                 return API.URL.baseUrl + uri
         }
     }

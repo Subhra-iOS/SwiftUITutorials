@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Order: Decodable {
+struct Order: Codable{
     let name: String
     let size: String
     let coffeeName: String
