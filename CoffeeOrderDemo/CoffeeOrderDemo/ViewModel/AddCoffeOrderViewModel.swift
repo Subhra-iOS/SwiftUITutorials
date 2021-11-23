@@ -11,7 +11,7 @@ import Combine
 class AddCoffeOrderViewModel: ObservableObject {
     
     private let webService: Webservice
-    private let addCoffeModels : [AddCoffeeModel]
+    let addCoffeModels : [AddCoffeeModel]
     private var cancellable: Set<AnyCancellable> = Set<AnyCancellable>()
     
     var name: String = ""
@@ -26,7 +26,11 @@ class AddCoffeOrderViewModel: ObservableObject {
         })
     }
     
-    private var calculatePrice: Double {
+    var total: Double {
+        return calculatePrice()
+    }
+    
+    private func calculatePrice() -> Double {
         if let model: AddCoffeeModel = self.addCoffeModels.first(where: { $0.name == coffeName }) {
             return model.price * priceToSize()
         }else{
@@ -40,7 +44,7 @@ class AddCoffeOrderViewModel: ObservableObject {
     }
     
     func placeCoffeOrder(){
-        let order = Order(name: self.name, size: self.size, coffeeName: self.coffeName, total: self.calculatePrice)
+        let order = Order(name: self.name, size: self.size, coffeeName: self.coffeName, total: self.calculatePrice())
         do{
             try self.webService.postCoffee(order: order)
                 .receive(on: DispatchQueue.main)

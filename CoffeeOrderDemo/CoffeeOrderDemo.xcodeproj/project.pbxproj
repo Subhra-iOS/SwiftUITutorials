@@ -20,6 +20,8 @@
 		2A6D2195269AE97F005DE9FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A6D2194269AE97F005DE9FB /* Assets.xcassets */; };
 		2A6D2198269AE97F005DE9FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A6D2197269AE97F005DE9FB /* Preview Assets.xcassets */; };
 		2A6D219B269AE97F005DE9FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A6D2199269AE97F005DE9FB /* LaunchScreen.storyboard */; };
+		2A747CE5274D022D00F35B37 /* AddCoffeeOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A747CE4274D022D00F35B37 /* AddCoffeeOrderView.swift */; };
+		2A747D87274D248800F35B37 /* OrderTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A747D86274D248800F35B37 /* OrderTotalView.swift */; };
 		2A7AB6F2274281420053941E /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7AB6F1274281420053941E /* OrderListViewModel.swift */; };
 		2A7AB6F7274287650053941E /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7AB6F6274287650053941E /* OrderListView.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,8 @@
 		2A6D2197269AE97F005DE9FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2A6D219A269AE97F005DE9FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A6D219C269AE97F005DE9FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A747CE4274D022D00F35B37 /* AddCoffeeOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoffeeOrderView.swift; sourceTree = "<group>"; };
+		2A747D86274D248800F35B37 /* OrderTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTotalView.swift; sourceTree = "<group>"; };
 		2A7AB6F1274281420053941E /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
 		2A7AB6F6274287650053941E /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +134,8 @@
 			children = (
 				2A6D2192269AE97D005DE9FB /* ContentView.swift */,
 				2A7AB6F6274287650053941E /* OrderListView.swift */,
+				2A747CE4274D022D00F35B37 /* AddCoffeeOrderView.swift */,
+				2A747D86274D248800F35B37 /* OrderTotalView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,10 +217,12 @@
 				2A6D2191269AE97D005DE9FB /* SceneDelegate.swift in Sources */,
 				2A3093B12741786F00352CAF /* Webservice.swift in Sources */,
 				2A3093AD274174A500352CAF /* Order.swift in Sources */,
+				2A747CE5274D022D00F35B37 /* AddCoffeeOrderView.swift in Sources */,
 				2A033313274BD42F00FAC672 /* OrderResponse.swift in Sources */,
 				2A7AB6F2274281420053941E /* OrderListViewModel.swift in Sources */,
 				2A6D2193269AE97D005DE9FB /* ContentView.swift in Sources */,
 				2A03323C274B78C400FAC672 /* Services.swift in Sources */,
+				2A747D87274D248800F35B37 /* OrderTotalView.swift in Sources */,
 				2A3093A927416DD400352CAF /* Coffee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
