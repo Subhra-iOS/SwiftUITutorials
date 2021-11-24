@@ -23,6 +23,6 @@ struct OrderTotalView: View {
 
 struct OrderTotalView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderTotalView(total: 15.25)
+        OrderTotalView(total: 15.25).previewLayout(.sizeThatFits)
     }
 }
