@@ -55,4 +55,8 @@ class OrderListViewModel: ObservableObject {
             }
         }
     }
+    
+    func getAllOrders(){
+        self.fetchAllOrders()
+    }
 }

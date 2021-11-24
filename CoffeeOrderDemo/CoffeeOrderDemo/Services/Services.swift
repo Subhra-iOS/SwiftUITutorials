@@ -9,7 +9,7 @@ import Foundation
 
 enum API{
     enum URL{
-        static let baseUrl = "https://glimmer-scratch-cartoon.glitch.me/"
+        static let baseUrl = "https://pie-silk-emmental.glitch.me/"
     }
 }
 

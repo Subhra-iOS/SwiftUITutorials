@@ -9,11 +9,10 @@ import SwiftUI
 
 struct AddCoffeeOrderView: View {
     
-    @ObservedObject private var addCoffeeOrderViewModel: AddCoffeOrderViewModel
+    @ObservedObject private var addCoffeeOrderViewModel: AddCoffeOrderViewModel =  AddCoffeOrderViewModel(service: Webservice(),coffeList: Coffee.allTypes())
     
-    init(addCoffeeViewModel: AddCoffeOrderViewModel) {
-        self.addCoffeeOrderViewModel = addCoffeeViewModel
-    }
+    @Binding var isShowModal: Bool
+    
     
     var body: some View {
                 
@@ -46,7 +45,8 @@ struct AddCoffeeOrderView: View {
                 
                 HStack {
                     Button("Place order") {
-                        
+                        self.addCoffeeOrderViewModel.placeCoffeOrder()
+                        self.isShowModal = false
                     }
                 }.padding(EdgeInsets(top: 10.0, leading: 100.0, bottom: 10.0, trailing: 100.0))
                 .foregroundColor(.white)
@@ -61,7 +61,6 @@ struct AddCoffeeOrderView: View {
 struct CoffeeCellView: View {
     let coffee: AddCoffeeModel
     @Binding var selection: String
-    
    
     var body: some View {
         HStack {
@@ -83,6 +82,15 @@ struct CoffeeCellView: View {
 
 struct AddCoffeeOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCoffeeOrderView(addCoffeeViewModel: AddCoffeOrderViewModel(service: Webservice(), coffeList: Coffee.allTypes()))
+        PreviewWrapper()
+       // AddCoffeeOrderView(isShowModal: .constant(true))
+    }
+}
+
+struct PreviewWrapper: View {
+    @State var show: Bool = true
+    
+    var body: some View {
+        AddCoffeeOrderView(isShowModal: $show)
     }
 }
