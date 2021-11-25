@@ -23,6 +23,13 @@ struct OrderTotalView: View {
 
 struct OrderTotalView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderTotalView(total: 15.25).previewLayout(.sizeThatFits)
+        Group{
+            OrderTotalView(total: 15.25).previewLayout(.sizeThatFits)
+                .environment(\.sizeCategory, .large)
+            OrderTotalView(total: 15.25).previewLayout(.sizeThatFits)
+                .environment(\.sizeCategory, .extraLarge)
+            OrderTotalView(total: 15.25).previewLayout(.sizeThatFits)
+                .environment(\.sizeCategory, .extraExtraLarge)
+        }
     }
 }
