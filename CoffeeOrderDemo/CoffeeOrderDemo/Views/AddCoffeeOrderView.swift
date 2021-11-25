@@ -91,6 +91,6 @@ struct PreviewWrapper: View {
     @State var show: Bool = true
     
     var body: some View {
-        AddCoffeeOrderView(isShowModal: $show)
+        AddCoffeeOrderView(isShowModal: $show).previewLayout(.sizeThatFits)
     }
 }

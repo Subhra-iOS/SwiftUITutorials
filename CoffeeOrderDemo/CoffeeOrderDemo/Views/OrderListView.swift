@@ -50,6 +50,6 @@ struct OrderListView: View {
 
 struct OrderListView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderListView(orders: [OrderViewModel(order: Order(name: "Subhra", size: "Large", coffeeName: "Cappuccino", total: 3.0))])
+        OrderListView(orders: [OrderViewModel(order: Order(name: "Subhra", size: "Large", coffeeName: "Cappuccino", total: 3.0))]).previewLayout(.sizeThatFits)
     }
 }
