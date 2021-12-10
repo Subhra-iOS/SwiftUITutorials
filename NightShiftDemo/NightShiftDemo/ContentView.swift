@@ -66,15 +66,24 @@ struct ContentView: View {
                         NavigationLink(
                             destination: Text("Destination"),
                             label: {
-                                HStack{
-                                    Text(img).font(.largeTitle).padding(5)
-                                    Text("Placeholder").padding(5)
-                                }
+                                ListCellView(item: img)
                             })
                     }
                 }
             }
             .navigationBarTitle("Night shift settings", displayMode: .inline).padding()
+        }
+    }
+}
+
+
+struct ListCellView: View {
+    let item: String
+    
+    var body: some View {
+        HStack{
+            Text(item).font(.largeTitle).padding(5)
+            Text("Placeholder").padding(5)
         }
     }
 }
