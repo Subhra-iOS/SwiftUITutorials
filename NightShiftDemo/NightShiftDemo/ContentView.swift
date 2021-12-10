@@ -8,9 +8,74 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var schedule: Bool = false
+    @State private var manuallyEnable: Bool = false
+    @State private var colorTeperature: CGFloat = 0.5
+    
+    private var images = ["🗾","🌅","🌄","🌠","🎇","🌇","🗾","🌅","🌄","🌠","🎇","🌇"]
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView{
+            
+            Form{
+                Section(header: Text("Night shift automaltically shift    colors Night shift automaltically shift colors Night shift automaltically shift colors Night shift automaltically shift colors")
+                            .font(.system(size: 15.0))
+                            .padding()
+                            .lineLimit(nil)) {
+                    Toggle(isOn: $schedule, label: {
+                        Text("Scheduled")
+                    })
+                    
+                    HStack{
+                        VStack{
+                            Text("From")
+                            Text("To")
+                        }
+                        
+                        Spacer()
+                        
+                        NavigationLink(
+                            destination: Text("Schedule settings"),
+                            label: {
+                                
+                                VStack{
+                                    Text("Sunset")
+                                    Text("Sunrise")
+                                }.foregroundColor(.blue)
+                                
+                        }).fixedSize()
+                    }
+                }
+                
+                Section(header: Text("").padding(2)) {
+                    Toggle(isOn: $manuallyEnable, label: {
+                        Text("Manually Enable Untill Tomorrow")
+                    })
+                }
+                
+                Section(header: Text("COLOR TEMPERATURE")) {
+                    HStack{
+                        Text("Less Warm")
+                        Slider(value: $colorTeperature)
+                        Text("More Warm")
+                    }
+                }
+                Section(header: Text("List")) {
+                    ForEach(self.images, id: \.self) { img  in
+                        NavigationLink(
+                            destination: Text("Destination"),
+                            label: {
+                                HStack{
+                                    Text(img).font(.largeTitle).padding(5)
+                                    Text("Placeholder").padding(5)
+                                }
+                            })
+                    }
+                }
+            }
+            .navigationBarTitle("Night shift settings", displayMode: .inline).padding()
+        }
     }
 }
 
