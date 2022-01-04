@@ -12,6 +12,7 @@
 		2A33086227832D1000614A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A33086127832D1000614A02 /* Assets.xcassets */; };
 		2A33086527832D1000614A02 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A33086427832D1000614A02 /* Preview Assets.xcassets */; };
 		2A33086F278342F600614A02 /* FlagDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A33086E278342F600614A02 /* FlagDetailsView.swift */; };
+		2A6E0FFF27845A0E001EBC33 /* FlagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6E0FFE27845A0E001EBC33 /* FlagViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		2A33086427832D1000614A02 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2A33086627832D1000614A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A33086E278342F600614A02 /* FlagDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagDetailsView.swift; sourceTree = "<group>"; };
+		2A6E0FFE27845A0E001EBC33 /* FlagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				2A33085D27832D0D00614A02 /* ModalDemoApp.swift */,
 				2A33085F27832D0D00614A02 /* ContentView.swift */,
 				2A33086E278342F600614A02 /* FlagDetailsView.swift */,
+				2A6E0FFE27845A0E001EBC33 /* FlagViewModel.swift */,
 				2A33086127832D1000614A02 /* Assets.xcassets */,
 				2A33086627832D1000614A02 /* Info.plist */,
 				2A33086327832D1000614A02 /* Preview Content */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A6E0FFF27845A0E001EBC33 /* FlagViewModel.swift in Sources */,
 				2A33086F278342F600614A02 /* FlagDetailsView.swift in Sources */,
 				2A33086027832D0D00614A02 /* ContentView.swift in Sources */,
 				2A33085E27832D0D00614A02 /* ModalDemoApp.swift in Sources */,

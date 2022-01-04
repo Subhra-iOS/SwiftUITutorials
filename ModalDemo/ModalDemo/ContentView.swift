@@ -9,18 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let flags = ["🇮🇳","🇪🇸","🇩🇪","🇺🇸","🇮🇱","🇧🇷"]
+    let flags = ["🇮🇳","🇮🇱","🇪🇸","🇩🇪","🇺🇸","🇧🇷"]
     
-    @State private var isOpen: Bool = false
+    /*@State private var isOpen: Bool = false
     @State private var selectedFlag: String = ""
-    @State private var country: String = ""
+    @State private var country: String = ""*/
+    
+    @State private var flagViewModel: FlagViewModel = FlagViewModel(flag: "", country: "", showModal: false)
     
     var body: some View {
         List{
-            Text(self.country)
+            Text(self.flagViewModel.country)
                 .font(.custom("Arial", size: 30))
             
-            ForEach(0..<self.flags.count) { index in
+            /*ForEach(0..<self.flags.count) { index in
                 
                 HStack{
                     Text("\(self.flags[index])")
@@ -32,13 +34,25 @@ struct ContentView: View {
                                 self.isOpen.toggle()
                                 self.selectedFlag = self.flags[index]
                             }))
+            }*/
+            
+            ForEach(self.flags, id: \.self){ flag in
+                
+                HStack{
+                    Text("\(flag)")
+                        .font(.custom("Arial", size: 100))
+                    Spacer()
+                    
+                }.gesture(TapGesture(count: 1)
+                            .onEnded({ _  in
+                                self.flagViewModel.flag = flag
+                                self.flagViewModel.showModal.toggle()
+                            }))
             }
-        }.sheet(isPresented: self.$isOpen, content: {
-            /*Text("\(self.selectedFlag)")
-                .font(.custom("Arial", size: 100))*/
-            FlagDetailsView(flag: self.selectedFlag,
-                            country: self.$country,
-                            isShown: self.$isOpen)
+            
+        }.sheet(isPresented: self.$flagViewModel.showModal, content: {
+            
+            FlagDetailsView(flagVM: self.$flagViewModel)
         })
     }
 }
