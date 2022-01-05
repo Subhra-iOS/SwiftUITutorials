@@ -8,11 +8,14 @@
 import Foundation
 import CoreData
 
-class CoreDataStack{
+final class CoreDataStack{
+    
+    static let shared = CoreDataStack(dbName:"HotCoffeeApp")
     
     private var dbName: String!
+    //private let dispatchQueue = Dis
     
-    convenience init(dbName: String){
+    private convenience init(dbName: String){
         self.init()
         self.dbName = dbName
     }
