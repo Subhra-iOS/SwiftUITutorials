@@ -8,6 +8,8 @@
 import Foundation
 import CoreData
 
+private let  sharedGroupContainerName = "com.ARCDemo.HotCoffeeApp"
+
 final class CoreDataStack{
     
     static let shared = CoreDataStack(dbName:"HotCoffeeApp")
@@ -33,20 +35,25 @@ final class CoreDataStack{
     @available(iOS 14.0, *)
     var privateContext: NSManagedObjectContext {
         let childContext = persistentContainer.newBackgroundContext()
-        childContext.parent = mainContext
-        childContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
+        /*childContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
         childContext.automaticallyMergesChangesFromParent = true
         let didSaveNotification = NSManagedObjectContext.didSaveObjectsNotification
         NotificationCenter.default.addObserver(self, selector: #selector(didSave(_:)),
-                                               name: didSaveNotification, object: childContext)
+                                               name: didSaveNotification, object: childContext)*/
         return childContext
     }
     
-    @objc private func didSave(_ notification: Notification) {
-        mainContext.mergeChanges(fromContextDidSave: notification)
-        self.saveContext()
-    }
+//    @objc private func didSave(_ notification: Notification) {
+//        mainContext.mergeChanges(fromContextDidSave: notification)
+//        self.saveContext()
+//    }
     
+    private var documentsDirectory: URL? {
+        
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return urls.first
+        
+    }
    
     // MARK: - Core Data stack
     
@@ -57,7 +64,15 @@ final class CoreDataStack{
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
+        //let container = NSPersistentContainer(name: String(format: "%@.sqlite", arguments: [self.dbName]))
         let container = NSPersistentContainer(name: self.dbName)
+                
+        let directoryURL  = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: sharedGroupContainerName)!
+        let url = directoryURL.appendingPathComponent("Documents/")
+        
+        print("\(url)")
+        
+        container.persistentStoreCoordinator.setURL(url, for: NSPersistentStore.storePersistance(StoreModel(modelName:self.dbName, storeUrl: url)))
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -72,6 +87,8 @@ final class CoreDataStack{
                  Check the error message to determine what the actual problem was.
                  */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
+            }else{
+                
             }
         })
         return container
@@ -102,4 +119,55 @@ final class CoreDataStack{
         NotificationCenter.default.removeObserver(self, name: NSManagedObjectContext.didSaveObjectsNotification, object: nil)
     }
     
+}
+
+struct StoreModel {
+    let modelName: String
+    let storeUrl: URL
+}
+
+extension NSPersistentStore{
+    
+    static var storePersistance:(StoreModel) -> NSPersistentStore = { storeModel  in
+        let manageObjectModel = Bundle.main.managedObjectModel(name: storeModel.modelName)
+        return NSPersistentStore(persistentStoreCoordinator: NSPersistentStoreCoordinator(managedObjectModel: manageObjectModel), configurationName: nil, at: storeModel.storeUrl, options: stockSQLiteStoreOptions)
+    }
+    
+    static private var stockSQLiteStoreOptions: [AnyHashable: Any] {
+        return [
+            NSMigratePersistentStoresAutomaticallyOption: true,
+            NSInferMappingModelAutomaticallyOption: true,
+            NSSQLitePragmasOption: ["journal_mode": "DELETE"],
+            NSPersistentStoreFileProtectionKey: FileProtectionType.complete
+        ]
+    }
+    
+}
+
+
+extension Bundle {
+    static private let modelExtension = "momd"
+    static private let modelAlternateExtension = "mom"
+    /**
+     Attempts to return an instance of NSManagedObjectModel for a given name within the bundle.
+     
+     - parameter name: The file name of the model without the extension.
+     - returns: The NSManagedObjectModel from the bundle with the given name.
+     **/
+    public func managedObjectModel(name: String) -> NSManagedObjectModel {
+                
+        var momPath : String? = Bundle.main.path(forResource: name, ofType: Bundle.modelExtension) ?? ""
+        
+        if let _ =  momPath {
+            
+        }else{
+            momPath = Bundle.main.path(forResource: name, ofType: Bundle.modelAlternateExtension)!
+        }
+        
+        let url : URL = URL(fileURLWithPath: momPath ?? "")
+        guard let model = NSManagedObjectModel(contentsOf: url) else {
+            preconditionFailure("Model not found or corrupted with name: \(name) in bundle: \(self)")
+        }
+        return model
+    }
 }

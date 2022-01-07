@@ -11,6 +11,8 @@ struct AddOrderView: View {
     
     @State private var addOrderViewModel = AddOrderViewModel(dbManager: CoreDataManager(stack: CoreDataStack.shared))
     
+    @Binding var isOpen: Bool
+    
     var body: some View {
         
         NavigationView {
@@ -27,7 +29,9 @@ struct AddOrderView: View {
                     .padding()
                     
                     Button("Submit") {
+                        
                         self.addOrderViewModel.saveOrder()
+                        self.isOpen = false
                     }
                     .frame(width: 200, height: 44, alignment: .center)
                     .font(.custom("Arial", size: 25))
@@ -44,6 +48,6 @@ struct AddOrderView: View {
 
 struct AddOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        AddOrderView()
+        AddOrderView(isOpen: .constant(false))
     }
 }

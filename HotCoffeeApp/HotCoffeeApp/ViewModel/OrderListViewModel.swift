@@ -25,7 +25,7 @@ class  OrderListViewModel: ObservableObject{
             return
         }
         self.orders = orders.compactMap(OrderViewModel.init)
-        print("\(String(describing: self.orders))")
+        print("\(String(describing: self.orders.first?.name))")
     }
     
 }

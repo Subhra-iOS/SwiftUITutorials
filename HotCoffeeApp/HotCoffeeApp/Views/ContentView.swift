@@ -14,7 +14,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var privateContext: NSManagedObjectContext
     @ObservedObject var orderListVM: OrderListViewModel = OrderListViewModel(dbManager: CoreDataManager(stack: CoreDataStack.shared))
     
-    @State private var isOpen: Bool = false
+    @State private var isPresented: Bool = false
     
     var body: some View {
         NavigationView {
@@ -23,12 +23,12 @@ struct ContentView: View {
                     OrderTypeCell(orderType: order)
                 }
             }
-            .sheet(isPresented: self.$isOpen, content: {
-                AddOrderView()
+            .sheet(isPresented: self.$isPresented, content: {
+                AddOrderView(isOpen: self.$isPresented)
             })
             .navigationTitle("Orders")
             .navigationBarItems(trailing: Button(action: {
-                self.isOpen = true
+                self.isPresented = true
             }, label: {
                 Text("+")
             }))
