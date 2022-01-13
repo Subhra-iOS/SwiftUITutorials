@@ -19,6 +19,8 @@
 		2A776B5A2785B1A1005F67BB /* AddOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A776B592785B1A1005F67BB /* AddOrderView.swift */; };
 		2A776B5E2785B8FB005F67BB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A776B5D2785B8FB005F67BB /* CoreDataManager.swift */; };
 		2A776B652785C3E1005F67BB /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A776B642785C3E1005F67BB /* OrderListViewModel.swift */; };
+		2AE9F2E62790116100D43537 /* Order+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9F2E42790116100D43537 /* Order+CoreDataClass.swift */; };
+		2AE9F2E72790116100D43537 /* Order+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE9F2E52790116100D43537 /* Order+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		2A776B592785B1A1005F67BB /* AddOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrderView.swift; sourceTree = "<group>"; };
 		2A776B5D2785B8FB005F67BB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		2A776B642785C3E1005F67BB /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewModel.swift; sourceTree = "<group>"; };
+		2AE9F2E42790116100D43537 /* Order+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2AE9F2E52790116100D43537 /* Order+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 				2A6E103827847BA8001EBC33 /* Assets.xcassets */,
 				2A6E103D27847BA8001EBC33 /* LaunchScreen.storyboard */,
 				2A6E104027847BA8001EBC33 /* Info.plist */,
+				2AE9F2E42790116100D43537 /* Order+CoreDataClass.swift */,
+				2AE9F2E52790116100D43537 /* Order+CoreDataProperties.swift */,
 				2A6E103527847BA6001EBC33 /* HotCoffeeApp.xcdatamodeld */,
 				2A6E103A27847BA8001EBC33 /* Preview Content */,
 			);
@@ -203,6 +209,8 @@
 				2A6E103227847BA6001EBC33 /* SceneDelegate.swift in Sources */,
 				2A6E103427847BA6001EBC33 /* ContentView.swift in Sources */,
 				2A776B5E2785B8FB005F67BB /* CoreDataManager.swift in Sources */,
+				2AE9F2E62790116100D43537 /* Order+CoreDataClass.swift in Sources */,
+				2AE9F2E72790116100D43537 /* Order+CoreDataProperties.swift in Sources */,
 				2A776B5A2785B1A1005F67BB /* AddOrderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

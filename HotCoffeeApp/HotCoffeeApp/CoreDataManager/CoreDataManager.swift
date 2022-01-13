@@ -22,7 +22,7 @@ class CoreDataManager{
     func save(user name: String,
               choice type: String){
         
-        let privateContext = self.coreDataStack.privateContext
+        let privateContext = self.coreDataStack.mainContext
         privateContext.perform {
             let order = Order(context: privateContext)
             order.customerName = name
@@ -39,7 +39,7 @@ class CoreDataManager{
     func fetchAllOrders() -> [Order]?{
         
         var orders: [Order]?
-        let privateContext = self.coreDataStack.privateContext
+        let privateContext = self.coreDataStack.mainContext
         let orderRequest: NSFetchRequest<Order> = Order.fetchRequest()
         do{
             orders = try privateContext.fetch(orderRequest)

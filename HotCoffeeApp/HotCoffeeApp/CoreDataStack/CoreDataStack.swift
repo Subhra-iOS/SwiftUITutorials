@@ -114,9 +114,9 @@ final class CoreDataStack{
         }
     }
     
-    @available(iOS 14.0, *)
+    //@available(iOS 14.0, *)
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSManagedObjectContext.didSaveObjectsNotification, object: nil)
+       // NotificationCenter.default.removeObserver(self, name: NSManagedObjectContext.didSaveObjectsNotification, object: nil)
     }
     
 }
