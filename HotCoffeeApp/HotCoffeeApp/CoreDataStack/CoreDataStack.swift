@@ -171,3 +171,55 @@ extension Bundle {
         return model
     }
 }
+
+/**
+ lazy var persistentContainer: NSPersistentContainer = {
+    let bundle = Bundle(identifier: frameworkIdentifier)
+    let modelURL = bundle!.url(forResource: model, withExtension: "momd")!
+    let managedObjectModel =  NSManagedObjectModel(contentsOf: modelURL)
+ 
+    let container = NSPersistentContainer(name: model, managedObjectModel: managedObjectModel!)
+    container.loadPersistentStores { (storeDescription, error) in
+ 
+        if let err = error{
+            fatalError("Loading of store failed:\(err)")
+        }
+    }
+ 
+    return container
+ }()
+ 
+ lazy var mainContext: NSManagedObjectContext = {
+    let viewContext = self.persistentContainer.viewContext
+    viewContext.automaticallyMergesChangesFromParent = true
+    return viewContext
+ }()
+ 
+ var backgroundContext: NSManagedObjectContext {
+ 
+    let viewContext = self.persistentContainer.newBackgroundContext()
+    viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+    return viewContext
+ }
+ 
+ //MARK: Accessor
+ public func upsertDownSync(list: [QModel], completeHander: @escaping (Bool)->()) {
+ 
+ let context = self.backgroundContext
+ context.perform {
+ 
+ for model in list {
+ self.upsertDownSync(data: model, context: context)
+ }
+ 
+ do {
+ try context.save()
+ completeHander(true)
+ } catch let error {
+ print("Failed to upsert: \(error.localizedDescription)")
+ completeHander(false)
+ }
+ }
+ }
+ 
+ */
