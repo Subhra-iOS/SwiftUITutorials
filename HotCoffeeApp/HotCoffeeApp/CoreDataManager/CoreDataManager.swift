@@ -39,14 +39,39 @@ class CoreDataManager{
     func fetchAllOrders() -> [Order]?{
         
         var orders: [Order]?
-        let privateContext = self.coreDataStack.mainContext
+        let mainContext = self.coreDataStack.mainContext
         let orderRequest: NSFetchRequest<Order> = Order.fetchRequest()
         do{
-            orders = try privateContext.fetch(orderRequest)
+            orders = try mainContext.fetch(orderRequest)
+        }catch let error as NSError{
+            print("\(error.localizedDescription)")
+        }
+        return orders
+    }
+    
+    func deleteOrder(name: String){
+        let mainContext = self.coreDataStack.mainContext
+        do{
+            if let order = self.fetchOrder(name: name){
+                mainContext.delete(order)
+                try mainContext.save()
+            }
+        }catch let error as NSError{
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    private func fetchOrder(name: String) -> Order?{
+        var orders:[Order]?
+        let requst: NSFetchRequest<Order> = Order.fetchRequest()
+        requst.predicate = NSPredicate(format: "customerName == %@", name)
+        let mainContext = self.coreDataStack.mainContext
+        do{
+            orders = try mainContext.fetch(requst)
         }catch{
             
         }
-        return orders
+        return orders?.first
     }
     
 }

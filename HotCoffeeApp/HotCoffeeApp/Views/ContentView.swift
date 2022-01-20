@@ -21,9 +21,17 @@ struct ContentView: View {
             List{
                 ForEach(self.orderListVM.orders, id: \.self) { order in
                     OrderTypeCell(orderType: order)
-                }
+                }.onDelete(perform: { indexSet in
+                    indexSet.forEach { index in
+                        let orderVM = self.orderListVM.orders[index]
+                        self.orderListVM.deleteOrder(orderVM)
+                    }
+                })
             }
-            .sheet(isPresented: self.$isPresented, content: {
+            .sheet(isPresented: self.$isPresented, onDismiss: {
+                print("On Dismiss")
+                self.orderListVM.fetchAllOrders()
+            } , content: {
                 AddOrderView(isOpen: self.$isPresented)
             })
             .navigationTitle("Orders")

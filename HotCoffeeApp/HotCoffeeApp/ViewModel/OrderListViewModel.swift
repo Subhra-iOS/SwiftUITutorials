@@ -19,8 +19,12 @@ class  OrderListViewModel: ObservableObject{
         self.fetchAllOrders()
     }
    
+    func deleteOrder(_ orderVM: OrderViewModel){
+        self.dbManager.deleteOrder(name: orderVM.name)
+        self.fetchAllOrders()
+    }
     
-    private func fetchAllOrders(){
+    func fetchAllOrders(){
         guard let orders = self.dbManager.fetchAllOrders() else{
             return
         }
