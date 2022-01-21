@@ -20,9 +20,10 @@ class CoreDataManager{
     private init(){ }
     
     func save(user name: String,
-              choice type: String){
+              choice type: String,
+              completion: @escaping(_ status: Bool) -> ()){
         
-        let privateContext = self.coreDataStack.mainContext
+        let privateContext = self.coreDataStack.privateContext
         privateContext.perform {
             let order = Order(context: privateContext)
             order.customerName = name
@@ -30,8 +31,10 @@ class CoreDataManager{
             
             do{
                 try privateContext.save()
+                completion(true)
             }catch let error{
                 print("\(error.localizedDescription)")
+                completion(false)
             }
         }
     }
@@ -49,25 +52,31 @@ class CoreDataManager{
         return orders
     }
     
-    func deleteOrder(name: String){
-        let mainContext = self.coreDataStack.mainContext
-        do{
-            if let order = self.fetchOrder(name: name){
-                mainContext.delete(order)
-                try mainContext.save()
+    func deleteOrder(name: String,
+                     completion: @escaping(_ status: Bool) -> ()){
+        let privateContext = self.coreDataStack.privateContext
+        privateContext.perform {
+            do{
+                if let order = self.fetchOrder(name: name, for: privateContext){
+                    privateContext.delete(order)
+                    try privateContext.save()
+                    completion(true)
+                }else{
+                    completion(false)
+                }
+            }catch let error as NSError{
+                print("\(error.localizedDescription)")
+                completion(false)
             }
-        }catch let error as NSError{
-            print("\(error.localizedDescription)")
         }
     }
     
-    private func fetchOrder(name: String) -> Order?{
+    private func fetchOrder(name: String, for context: NSManagedObjectContext) -> Order?{
         var orders:[Order]?
         let requst: NSFetchRequest<Order> = Order.fetchRequest()
         requst.predicate = NSPredicate(format: "customerName == %@", name)
-        let mainContext = self.coreDataStack.mainContext
         do{
-            orders = try mainContext.fetch(requst)
+            orders = try context.fetch(requst)
         }catch{
             
         }

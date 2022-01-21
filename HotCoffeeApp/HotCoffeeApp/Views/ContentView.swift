@@ -11,7 +11,7 @@ import CoreData
 
 struct ContentView: View {
     
-    @Environment(\.managedObjectContext) var privateContext: NSManagedObjectContext
+   // @Environment(\.managedObjectContext) var privateContext: NSManagedObjectContext
     @ObservedObject var orderListVM: OrderListViewModel = OrderListViewModel(dbManager: CoreDataManager(stack: CoreDataStack.shared))
     
     @State private var isPresented: Bool = false
@@ -25,6 +25,7 @@ struct ContentView: View {
                     indexSet.forEach { index in
                         let orderVM = self.orderListVM.orders[index]
                         self.orderListVM.deleteOrder(orderVM)
+                                                     
                     }
                 })
             }

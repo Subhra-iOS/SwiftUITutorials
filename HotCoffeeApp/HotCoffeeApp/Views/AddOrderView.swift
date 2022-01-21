@@ -29,9 +29,9 @@ struct AddOrderView: View {
                     .padding()
                     
                     Button("Submit") {
-                        
-                        self.addOrderViewModel.saveOrder()
-                        self.isOpen = false
+                        self.addOrderViewModel.saveOrder { state in
+                            self.isOpen = !state
+                        }
                     }
                     .frame(width: 200, height: 44, alignment: .center)
                     .font(.custom("Arial", size: 25))

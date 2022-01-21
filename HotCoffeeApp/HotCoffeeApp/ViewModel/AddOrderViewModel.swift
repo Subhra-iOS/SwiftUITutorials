@@ -17,7 +17,10 @@ class AddOrderViewModel{
     var userName: String = ""
     var coffeeType: String = ""
     
-    func saveOrder(){
-        self.dbManager.save(user: userName, choice: coffeeType)
+    func saveOrder(on complete: @escaping(_ status: Bool) -> ()){
+        self.dbManager.save(user: userName,
+                            choice: coffeeType) { state in
+            complete(state)
+        }
     }
 }

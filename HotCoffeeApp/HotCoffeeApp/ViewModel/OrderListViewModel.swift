@@ -20,16 +20,19 @@ class  OrderListViewModel: ObservableObject{
     }
    
     func deleteOrder(_ orderVM: OrderViewModel){
-        self.dbManager.deleteOrder(name: orderVM.name)
-        self.fetchAllOrders()
+        self.dbManager.deleteOrder(name: orderVM.name) { [weak self] state in
+            self?.fetchAllOrders()
+        }
     }
     
     func fetchAllOrders(){
         guard let orders = self.dbManager.fetchAllOrders() else{
             return
         }
-        self.orders = orders.compactMap(OrderViewModel.init)
-        print("\(String(describing: self.orders.first?.name))")
+        DispatchQueue.main.async { [weak self] in
+            self?.orders = orders.compactMap(OrderViewModel.init)
+            print("\(String(describing: self?.orders.first?.name))")
+        }
     }
     
 }
