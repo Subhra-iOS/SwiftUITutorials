@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 private let  sharedGroupContainerName = "com.ARCDemo.HotCoffeeApp"
+private let modelExtension = "momd"
 
 final class CoreDataStack{
     
@@ -28,36 +29,35 @@ final class CoreDataStack{
     
     var mainContext: NSManagedObjectContext {
         let context = persistentContainer.viewContext
+        context.automaticallyMergesChangesFromParent = true
         return context
     }
     
-    
-    @available(iOS 14.0, *)
     var privateContext: NSManagedObjectContext {
         let childContext = persistentContainer.newBackgroundContext()
-        /*childContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
-        childContext.automaticallyMergesChangesFromParent = true
-        let didSaveNotification = NSManagedObjectContext.didSaveObjectsNotification
-        NotificationCenter.default.addObserver(self, selector: #selector(didSave(_:)),
-                                               name: didSaveNotification, object: childContext)*/
+        childContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+
         return childContext
     }
     
-//    @objc private func didSave(_ notification: Notification) {
-//        mainContext.mergeChanges(fromContextDidSave: notification)
-//        self.saveContext()
-//    }
-    
-    private var documentsDirectory: URL? {
-        
-        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return urls.first
-        
-    }
-   
     // MARK: - Core Data stack
-    
     lazy private var persistentContainer: NSPersistentContainer = {
+        let bundle = Bundle(identifier: sharedGroupContainerName)
+        let modelURL = bundle!.url(forResource: self.dbName, withExtension: modelExtension)!
+        let managedObjectModel =  NSManagedObjectModel(contentsOf: modelURL)
+        
+        let container = NSPersistentContainer(name: self.dbName, managedObjectModel: managedObjectModel!)
+        container.loadPersistentStores { (storeDescription, error) in
+            
+            if let err = error{
+                fatalError("Loading of store failed:\(err)")
+            }
+        }
+        
+        return container
+    }()
+    
+    /*lazy private var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
@@ -92,13 +92,27 @@ final class CoreDataStack{
             }
         })
         return container
-    }()
+    }()*/
     
     // MARK: - Core Data Saving support
     
     func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
         self.persistentContainer.performBackgroundTask(block)
     }
+    
+    func save(on context: NSManagedObjectContext){
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
     
     func saveContext () {
         let context = mainContext
@@ -114,14 +128,14 @@ final class CoreDataStack{
         }
     }
     
-    //@available(iOS 14.0, *)
+    
     deinit {
-       // NotificationCenter.default.removeObserver(self, name: NSManagedObjectContext.didSaveObjectsNotification, object: nil)
+      
     }
     
 }
 
-struct StoreModel {
+/*struct StoreModel {
     let modelName: String
     let storeUrl: URL
 }
@@ -170,37 +184,9 @@ extension Bundle {
         }
         return model
     }
-}
+}*/
 
 /**
- lazy var persistentContainer: NSPersistentContainer = {
-    let bundle = Bundle(identifier: frameworkIdentifier)
-    let modelURL = bundle!.url(forResource: model, withExtension: "momd")!
-    let managedObjectModel =  NSManagedObjectModel(contentsOf: modelURL)
- 
-    let container = NSPersistentContainer(name: model, managedObjectModel: managedObjectModel!)
-    container.loadPersistentStores { (storeDescription, error) in
- 
-        if let err = error{
-            fatalError("Loading of store failed:\(err)")
-        }
-    }
- 
-    return container
- }()
- 
- lazy var mainContext: NSManagedObjectContext = {
-    let viewContext = self.persistentContainer.viewContext
-    viewContext.automaticallyMergesChangesFromParent = true
-    return viewContext
- }()
- 
- var backgroundContext: NSManagedObjectContext {
- 
-    let viewContext = self.persistentContainer.newBackgroundContext()
-    viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-    return viewContext
- }
  
  //MARK: Accessor
  public func upsertDownSync(list: [QModel], completeHander: @escaping (Bool)->()) {
