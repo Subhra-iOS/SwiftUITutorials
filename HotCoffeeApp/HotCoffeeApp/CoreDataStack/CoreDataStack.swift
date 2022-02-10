@@ -45,7 +45,15 @@ final class CoreDataStack{
         let modelURL = bundle!.url(forResource: self.dbName, withExtension: modelExtension)!
         let managedObjectModel =  NSManagedObjectModel(contentsOf: modelURL)
         
+        let storeDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let url = storeDirectory.appendingPathComponent(String(format: "%@.sqlite", arguments: [self.dbName]))
+        let description = NSPersistentStoreDescription(url: url)
+        description.shouldInferMappingModelAutomatically = true
+        description.shouldMigrateStoreAutomatically = true
+        description.setOption(FileProtectionType.complete as NSObject, forKey: NSPersistentStoreFileProtectionKey)
+        
         let container = NSPersistentContainer(name: self.dbName, managedObjectModel: managedObjectModel!)
+        container.persistentStoreDescriptions = [description]
         container.loadPersistentStores { (storeDescription, error) in
             
             if let err = error{
