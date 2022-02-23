@@ -11,6 +11,8 @@
 		2A87517C27B6588300333BDE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A87517B27B6588300333BDE /* ContentView.swift */; };
 		2A87517E27B6588600333BDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A87517D27B6588600333BDE /* Assets.xcassets */; };
 		2A87518127B6588600333BDE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A87518027B6588600333BDE /* Preview Assets.xcassets */; };
+		2AAA6D6827C6608A0018AF25 /* ImageDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAA6D6727C6608A0018AF25 /* ImageDetectionViewModel.swift */; };
+		2AAA6D6B27C6609F0018AF25 /* ImageDetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AAA6D6A27C6609F0018AF25 /* ImageDetectionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		2A87517D27B6588600333BDE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A87518027B6588600333BDE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2A87518227B6588600333BDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AAA6D6727C6608A0018AF25 /* ImageDetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetectionViewModel.swift; sourceTree = "<group>"; };
+		2AAA6D6A27C6609F0018AF25 /* ImageDetectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetectionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				2A87517927B6588300333BDE /* CoreImageSwiftUIApp.swift */,
 				2A87517B27B6588300333BDE /* ContentView.swift */,
+				2AAA6D6727C6608A0018AF25 /* ImageDetectionViewModel.swift */,
+				2AAA6D6A27C6609F0018AF25 /* ImageDetectionManager.swift */,
 				2A87517D27B6588600333BDE /* Assets.xcassets */,
 				2A87518227B6588600333BDE /* Info.plist */,
 				2A87517F27B6588600333BDE /* Preview Content */,
@@ -140,6 +146,8 @@
 			files = (
 				2A87517C27B6588300333BDE /* ContentView.swift in Sources */,
 				2A87517A27B6588300333BDE /* CoreImageSwiftUIApp.swift in Sources */,
+				2AAA6D6827C6608A0018AF25 /* ImageDetectionViewModel.swift in Sources */,
+				2AAA6D6B27C6609F0018AF25 /* ImageDetectionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
