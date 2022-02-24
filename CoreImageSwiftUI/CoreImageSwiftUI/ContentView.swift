@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+import CoreML
+import UIKit
 
 struct ContentView: View {
     
     private let images = ["cat1", "dog", "tree", "mountains"]
     @State private var selectedImage = ""
+        
+    @ObservedObject private var viewModel: ImageDetectionViewModel
+    
+    init() {
+        self.viewModel = ImageDetectionViewModel(manager: ImageDetectionManager(model: Resnet50()), predictionLabel: "")
+    }
     
     var body: some View {
         NavigationView{
@@ -30,7 +38,7 @@ struct ContentView: View {
                 })
                 
                 Button(action: {
-                    
+                    self.viewModel.detect(name: self.selectedImage)
                 }, label: {
                     Text("Setect")
                 })
@@ -40,7 +48,7 @@ struct ContentView: View {
                 .foregroundColor(Color.white)
                 .cornerRadius(10.0)
                 
-                Text("Prediction will dispalyed here....")
+                Text(self.viewModel.updatedLabel)
                     .padding()
             }
             .navigationBarTitle("Core ML")
